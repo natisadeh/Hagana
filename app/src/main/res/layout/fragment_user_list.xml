@@ -1,0 +1,43 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/background"
+    tools:context="com.example.natis.finalprojectversion10.UserListFragment">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ListView
+            android:id="@+id/list_items"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        </ListView>
+
+        <Button
+            android:id="@+id/fragment_edit_btn"
+            android:layout_width="127dp"
+            android:layout_height="54dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_gravity="bottom|right"
+            android:fontFamily="cursive"
+            android:text="Edit"
+            android:textSize="30sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/fragment_note_btn"
+            android:layout_width="154dp"
+            android:layout_height="54dp"
+            android:layout_gravity="bottom|left"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:fontFamily="cursive"
+            android:text="Add note"
+            android:textSize="30sp"
+            android:textStyle="bold" />
+    </FrameLayout>
+
+</LinearLayout>

@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "401723682448",
+    "firebase_url": "https://hagana-c4f38.firebaseio.com",
+    "project_id": "hagana-c4f38",
+    "storage_bucket": "hagana-c4f38.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:401723682448:android:2f5cf77235461dd8",
+        "android_client_info": {
+          "package_name": "com.example.natis.hagana"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "401723682448-cnod6p3mdprb340anhvbq28njfjjbia3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBQbGBRnjbJSYzf02NMUOnAthtu9VsDGSQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

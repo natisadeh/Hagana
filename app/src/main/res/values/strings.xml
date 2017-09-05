@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">My Notes</string>
+
+    <string name="sign_in">Sign in</string>
+    <string name="register">Register</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="title_fragment_register">Registration</string>
+    <string name="title_fragment_sign_in">Sign In</string>
+    <string name="first_name_colon">First Name:</string>
+    <string name="last_name_colon">Last Name:</string>
+    <string name="email_colon">Email:</string>
+    <string name="password_colon">Password:</string>
+    <string name="hint_first_name">first name</string>
+    <string name="hint_last_name">last name</string>
+    <string name="hint_email">enter E-mail</string>
+    <string name="hint_password">enter Password</string>
+    <string name="verify_email">Verify Email</string>
+    <string name="auth_failed">Authentication failed</string>
+
+    <string name="loading">loading</string>
+</resources>
