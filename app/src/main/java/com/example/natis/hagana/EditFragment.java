@@ -4,11 +4,13 @@ package com.example.natis.hagana;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
 
 import com.example.natis.hagana.Model.ClientUser;
 import com.example.natis.hagana.Model.Model;
@@ -17,7 +19,6 @@ import com.example.natis.hagana.Model.ModelFirebase;
 public class EditFragment extends Fragment {
     EditText firstName;
     EditText lastName;
-    EditText gender;
 
     Button cancel;
     Button save;
@@ -26,6 +27,9 @@ public class EditFragment extends Fragment {
 
     private FragmentTransaction ftr;
     private UserListFragment ful;
+    private RadioButton female;
+    private RadioButton male;
+
     public EditFragment() {
 
     }
@@ -37,10 +41,29 @@ public class EditFragment extends Fragment {
         View view=inflater.inflate(R.layout.fragment_user_edit, container, false);
         firstName=(EditText) view.findViewById(R.id.fragment_edit_first_name);
         lastName=(EditText)view.findViewById(R.id.fragment_edit_last_name);
-        gender=(EditText)view.findViewById(R.id.genderName);
+        female = (RadioButton) view.findViewById(R.id.fragment_edit_female);
+        male=(RadioButton) view.findViewById(R.id.fragment_edit_male);
 
         cancel = (Button) view.findViewById(R.id.editCancelBtn);
         save = (Button) view.findViewById(R.id.editSaveBtn);
+
+        female.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(male.isChecked()) {
+                    male.setChecked(false);
+                }
+            }
+        });
+
+        male.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(female.isChecked()) {
+                    female.setChecked(false);
+                }
+            }
+        });
 
         cancel.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,9 +88,15 @@ public class EditFragment extends Fragment {
                     current.setfirstName(firstName.getText().toString());
                 if (lastName.getText().toString() != null)
                     current.setlastName(lastName.getText().toString());
-                if (gender.getText().toString() != null)
-                    current.setGender(gender.getText().toString());
+                if (female.isChecked())
+                    current.setGender("Female");
+                else if(male.isChecked())
+                    current.setGender("Male");
+                else {
+                    Log.d("TAG","no one is checked");
+                }
                 Model.instance().updateUser(current);
+                getFragmentManager().popBackStack();
             }
         });
 

@@ -3,6 +3,7 @@ package com.example.natis.hagana;
 import android.app.Fragment;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,8 +22,6 @@ public class RegisterFragment extends Fragment {
 
 
     TableLayout tableGender;
-    Boolean flagMale=false;
-    Boolean flagFemale=false;
 
     //buttons
     Button verifyEmailBtn;
@@ -60,21 +59,24 @@ public class RegisterFragment extends Fragment {
         verifyEmailBtn.setEnabled(false);
         tableGender= (TableLayout) view.findViewById(R.id.fragment_register_table_gender);
         tableGender.setVisibility(View.VISIBLE);
-
         female = (RadioButton) view.findViewById(R.id.fragment_register_female);
         male=(RadioButton) view.findViewById(R.id.fragment_register_male);
 
         female.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                flagFemale=!flagFemale;
+                if(male.isChecked()) {
+                    male.setChecked(false);
+                }
             }
         });
 
         male.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                flagMale=!flagMale;
+                if(female.isChecked()) {
+                    female.setChecked(false);
+                }
             }
         });
 
@@ -114,10 +116,13 @@ public class RegisterFragment extends Fragment {
         user.setEmail(emailET.getText().toString());
         user.setPassword(passwordET.getText().toString());
         user.setNotes(" ");
-        if (flagFemale)
+        if (female.isChecked())
             user.setGender("Female");
-        else
+        else if(male.isChecked())
             user.setGender("Male");
+        else {
+            Log.d("TAG","no one is checked");
+        }
         return user;
     }
 

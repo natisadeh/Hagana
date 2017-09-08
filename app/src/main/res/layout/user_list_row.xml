@@ -11,13 +11,24 @@
         android:layout_weight="1"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/strow_name"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="user name:"
-            android:textSize="20dp" />
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="user name:"
+                android:textSize="20dp"/>
+            <TextView
+                android:id="@+id/strow_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:text="user"
+                android:textSize="20dp" />
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"

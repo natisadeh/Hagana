@@ -298,6 +298,7 @@ public class ModelFirebase {
         temp.setUserId(user.getUserId());
         temp.setfirstName(user.getfirstName());
         temp.setlastName(user.getlastName());
+        temp.setGender(user.getGender());
         temp.setNotes(user.getNotes());
         DatabaseReference myRef = database.getReference("users").child(user.getUserId());
         myRef.setValue(temp);

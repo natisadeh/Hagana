@@ -102,16 +102,10 @@
                             android:inputType="textPersonName" />
                     </TableRow>
 
-                    <TableRow
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="6dp">
-
-                    </TableRow>
                 </TableLayout>
 
                 <TableLayout
-                    android:id="@+id/fragment_register_table_bus"
+                    android:id="@+id/fragment_edit_table_gender"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingLeft="10dp"
@@ -128,35 +122,55 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="serif"
-                            android:text="Gender:"
-                            android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large"
+                            android:lineSpacingExtra="8sp"
+                            android:text="Gender :"
+                            android:textAlignment="center"
+                            android:textSize="24sp"
                             android:textStyle="bold" />
+                    </TableRow>
 
-                        <EditText
-                            android:id="@+id/genderName"
+                    <TableRow
+                        android:id="@+id/fragment_edit_female_table"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="serif"
+                            android:text="Female"
+                            android:textStyle="bold" />
+                        <RadioButton
+                            android:id="@+id/fragment_edit_female"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="15dp"
                             android:layout_weight="1"
+                            />
+                    </TableRow>
+
+                    <TableRow
+                        android:id="@+id/fragment_edit_male_table"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:fontFamily="serif"
-                            android:hint="gender" />
+                            android:text="Male"
+                            android:textStyle="bold" />
+                        <RadioButton
+                            android:id="@+id/fragment_edit_male"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:checkedButton="1"
+                            />>
                     </TableRow>
 
-                    <TableRow
-                        android:id="@+id/fragment_register_addr"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="5dp">
 
-                    </TableRow>
-
-                    <TableRow
-                        android:id="@+id/fragment_register_Treatments"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="5dp">
-
-                    </TableRow>
 
                 </TableLayout>
 
