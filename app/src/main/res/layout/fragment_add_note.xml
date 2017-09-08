@@ -23,12 +23,12 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:selectAllOnFocus="false"
+        android:hint="Please add your note here"
         android:inputType="textCapSentences|textMultiLine"
-        android:maxLines ="4"
-        android:maxLength ="2000"
-        android:hint ="Please add your note here"
-        android:scrollHorizontally="false" />
+        android:maxLength="2000"
+        android:maxLines="2000"
+        android:scrollHorizontally="false"
+        android:selectAllOnFocus="false" />
 
     <TableRow
         android:layout_width="match_parent"

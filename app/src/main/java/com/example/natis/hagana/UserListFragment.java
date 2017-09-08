@@ -73,7 +73,7 @@ public class UserListFragment extends Fragment {
             @Override
             public void onComplete(List<ClientUser> list) {
                 data = list;
-                delegate.hideProgressBar();
+                //delegate.hideProgressBar();
                 UserListAdapter.notifyDataSetChanged();
             }
 

@@ -40,7 +40,7 @@ public class AddNoteFragment extends Fragment {
                 current = Model.instance().getOneUser(current.getUserId());
                 current.setNotes(note.getText().toString());
                 Model.instance().updateUser(current);
-
+                getFragmentManager().popBackStack();
 //                ful = new UserListFragment();
 //                ftr = getFragmentManager().beginTransaction();
 //                //add to the screen

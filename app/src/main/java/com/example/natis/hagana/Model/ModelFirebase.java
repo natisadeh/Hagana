@@ -31,7 +31,6 @@ public class ModelFirebase {
 
     private static final String TAG = "EmailPassword";
     // [START declare_auth]
-    private FirebaseAuth mAuth;
     private FirebaseUser current;
     private String id;
     // [END declare_auth]
@@ -41,13 +40,12 @@ public class ModelFirebase {
     // [END declare_auth_listener]
 
     //----firebase storage and realtime databse-------
-    private FirebaseDatabase database;//firebase databse reference
-
-    public StorageReference mStorageRef;//firebase storage reference(read and write images)
+    private FirebaseDatabase database = FirebaseDatabase.getInstance();//firebase databse reference
+    public StorageReference mStorageRef = FirebaseStorage.getInstance().getReference();//firebase storage reference(read and write images)
+    public FirebaseAuth mAuth = FirebaseAuth.getInstance();
 
     public ModelFirebase() {
         //------------Authentication------------
-        mAuth = FirebaseAuth.getInstance();
         if(mAuth.getCurrentUser() != null) {
             id = mAuth.getCurrentUser().getUid();
         }
@@ -60,9 +58,6 @@ public class ModelFirebase {
             }
         };
         mAuth.addAuthStateListener(mAuthListener);
-        database= FirebaseDatabase.getInstance();
-        mStorageRef = FirebaseStorage.getInstance().getReference();
-
     }
 
     public String getCurrentUserId() {return id;}
@@ -107,6 +102,7 @@ public class ModelFirebase {
         viewlistener.printToLogMessage("TAG","saved to Firebase storage");
         //saving user details to storage
         HashMap<String, Object> result = new HashMap<>();
+        result.put("userId",user.getUserId());
         result.put("firstName",user.getfirstName());
         result.put("lastName",user.getlastName());
         result.put("gender", user.getGender());
