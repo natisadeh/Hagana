@@ -9,7 +9,7 @@ import android.util.Log;
 public class ModelSQL  extends SQLiteOpenHelper {
     public ModelSQL(Context context) {
 
-        super(context, "database.db", null, 3);
+        super(context, "database.db", null, 11);
         Log.d("TAG","context =="+context);
     }
 

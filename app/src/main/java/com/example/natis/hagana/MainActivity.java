@@ -17,13 +17,14 @@ import com.example.natis.hagana.Model.ClientUser;
 import com.example.natis.hagana.Model.Model;
 
 public class MainActivity extends Activity
-        implements UserListFragment.OnFragmentInteractionListener {
+        implements UserListFragment.OnFragmentInteractionListener, EditFragment.OnFragmentInteractionListener {
     private FragmentTransaction ftr;
     private MainFragment mainFragment;
     private RegisterFragment registerFragment;
     private SignInFragment signInFragment;
     private UserListFragment userListFragment;
     private Model.LoginListener loginListener;
+    private EditFragment editFragment;
     private MyProgressBar progressBar;
     static final int REQUEST_WRITE_STORAGE = 11;
 
@@ -37,6 +38,7 @@ public class MainActivity extends Activity
         //constracting the fragments in this activity
         mainFragment=new MainFragment();
         signInFragment=new SignInFragment();
+        editFragment = new EditFragment();
         registerFragment=new RegisterFragment();
         userListFragment = new UserListFragment();
         ftr = getFragmentManager().beginTransaction();
@@ -249,5 +251,31 @@ public class MainActivity extends Activity
     @Override
     public void onItemSelected(String itemId) {
 
+    }
+
+    @Override
+    public void onSaveSelected() {
+        Log.d("TAG","onSaveSelected");
+        FragmentTransaction tran = getFragmentManager().beginTransaction();
+        tran.replace(R.id.main_container, userListFragment);
+        tran.addToBackStack("");
+        tran.commit();
+        // getActionBar().setDisplayHomeAsUpEnabled(true);
+    }
+
+    @Override
+    public void onButtonSelected(String itemId) {
+        EditFragment fragment = EditFragment.getInstance(itemId);
+        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+        transaction.replace(R.id.main_container, fragment);
+        transaction.addToBackStack("");
+        transaction.commit();
+
+    }
+    @Override
+    public void onCancelSelected() {
+        Log.d("TAG","onCancelSelected");
+        getFragmentManager().popBackStack();
+        // getActionBar().setDisplayHomeAsUpEnabled(true);
     }
 }

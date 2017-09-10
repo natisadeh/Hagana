@@ -8,6 +8,10 @@ public class ClientUser {
     private String password;
     private String gender;
     private String notes;
+
+    private String imageUrl;
+    private byte[] imageBitMap;
+
     public ClientUser(){
     }
 
@@ -46,4 +50,12 @@ public class ClientUser {
     public String getNotes() {return notes;}
 
     public void setNotes(String notes) {this.notes = notes;}
+
+    public String getImageUrl() {return imageUrl;}
+
+    public void setImageUrl(String images) {this.imageUrl = images;}
+
+    public byte[] getImageBitMap() {return imageBitMap;}
+
+    public void setImageBitMap(byte[] imageBitMap) {this.imageBitMap = imageBitMap;}
 }

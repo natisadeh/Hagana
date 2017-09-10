@@ -123,6 +123,7 @@ public class RegisterFragment extends Fragment {
         else {
             Log.d("TAG","no one is checked");
         }
+        user.setImageUrl("0"); //for empty pic
         return user;
     }
 

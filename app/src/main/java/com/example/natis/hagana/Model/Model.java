@@ -2,8 +2,13 @@ package com.example.natis.hagana.Model;
 
 import android.app.Activity;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.util.Log;
+import android.webkit.URLUtil;
 
 import java.util.List;
+
+import static com.example.natis.hagana.Model.ModelFiles.saveImageToFile;
 
 public class Model {
 
@@ -21,7 +26,6 @@ public class Model {
         modelFirebase = new ModelFirebase();
     }
 
-    public ModelSQL getModelSQL() {return this.modelSql;}
     public void getAllClientUsers(final GetAllUsersListener listener) {
 
         modelFirebase.getAllUsers(new GetAllUsersListener() {
@@ -29,6 +33,7 @@ public class Model {
             public void onComplete(List<ClientUser> userList) {
                 listener.onComplete(userList);
                 for(ClientUser user : userList){
+                    if (!ClientUserSQL.checkIfExist(modelSql.getReadableDatabase(), user.getUserId()))
                         ClientUserSQL.addUser(modelSql.getWritableDatabase(),user);
                 }
             }
@@ -47,6 +52,7 @@ public class Model {
     }
 
     public ClientUser getOneUser(String uid){//, final ModelFirebase.GetUserCallback callback) {
+        Log.d("TEST", "1");
         return ClientUserSQL.getUser(modelSql.getReadableDatabase(),uid);
     }
 
@@ -203,10 +209,67 @@ public class Model {
         void fail();
     }
 
+    public void saveImage(final Bitmap imageBmp, final String name, final SaveImageListener listener) {
+        modelFirebase.saveImage(imageBmp, name, new SaveImageListener() {
+            @Override
+            public void complete(String url) {
+                String fileName = URLUtil.guessFileName(url, null, null);
+                saveImageToFile(imageBmp,fileName);
+                listener.complete(url);
+            }
+
+            @Override
+            public void fail() {
+                listener.fail();
+            }
+        });
+
+
+    }
+
 
     public interface GetImageListener{
         void onSuccess(Bitmap image);
         void onFail();
     }
+    public void getImage(final String url,final GetImageListener listener) {
+        //check if image exsist localy
+        final String fileName = URLUtil.guessFileName(url, null, null);
+        ModelFiles.loadImageFromFileAsynch(fileName, new ModelFiles.LoadImageFromFileAsynch() {
+            @Override
+            public void onComplete(Bitmap bitmap) {
+                if (bitmap != null){
+                    Log.d("TAG","getImage from local success " + fileName);
+                    listener.onSuccess(bitmap);
+                }else {
+                    modelFirebase.getImage(url, new GetImageListener() {
+                        @Override
+                        public void onSuccess(Bitmap image) {
+                            String fileName = URLUtil.guessFileName(url, null, null);
+                            Log.d("TAG","getImage from FB success " + fileName);
+                            saveImageToFile(image,fileName);
+                            listener.onSuccess(image);
+                        }
+
+                        @Override
+                        public void onFail() {
+                            Log.d("TAG","getImage from FB fail ");
+                            listener.onFail();
+                        }
+                    });
+
+                }
+            }
+        });
+    }
+
+    public void downloadPicture(byte[] imgArray, String imgName){
+        Bitmap image = BitmapFactory.decodeByteArray(imgArray,0,imgArray.length);
+        saveImageToFile(image,imgName);
+    }
+    public void downloadPicture(Bitmap imgArray, String imgName){
+        saveImageToFile(imgArray,imgName);
+    }
+
 
 }

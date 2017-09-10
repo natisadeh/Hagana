@@ -41,7 +41,9 @@ public class ModelFirebase {
 
     //----firebase storage and realtime databse-------
     private FirebaseDatabase database = FirebaseDatabase.getInstance();//firebase databse reference
+
     public StorageReference mStorageRef = FirebaseStorage.getInstance().getReference();//firebase storage reference(read and write images)
+
     public FirebaseAuth mAuth = FirebaseAuth.getInstance();
 
     public ModelFirebase() {
@@ -61,6 +63,7 @@ public class ModelFirebase {
     }
 
     public String getCurrentUserId() {return id;}
+
     public void createAccount(final ClientUser user, final Model.LoginListener listener,final Model.saveUserRemote sur) {
 
         listener.printToLogMessage(TAG, "createAccount:" + user.getEmail());
@@ -100,12 +103,14 @@ public class ModelFirebase {
     public void addUser(ClientUser user,final Model.LoginListener viewlistener)
     {
         viewlistener.printToLogMessage("TAG","saved to Firebase storage");
+
         //saving user details to storage
         HashMap<String, Object> result = new HashMap<>();
         result.put("userId",user.getUserId());
         result.put("firstName",user.getfirstName());
         result.put("lastName",user.getlastName());
         result.put("gender", user.getGender());
+        result.put("imageUrl",user.getImageUrl());
 
          DatabaseReference myRef = database.getReference("users").child(user.getUserId());
          myRef.setValue(result);
@@ -295,11 +300,14 @@ public class ModelFirebase {
     public void updateUser(ClientUser user){
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         ClientUser temp = new ClientUser();
+
         temp.setUserId(user.getUserId());
         temp.setfirstName(user.getfirstName());
         temp.setlastName(user.getlastName());
         temp.setGender(user.getGender());
         temp.setNotes(user.getNotes());
+        temp.setImageUrl(user.getImageUrl());
+
         DatabaseReference myRef = database.getReference("users").child(user.getUserId());
         myRef.setValue(temp);
     }
