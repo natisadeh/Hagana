@@ -260,7 +260,6 @@ public class MainActivity extends Activity
         tran.replace(R.id.main_container, userListFragment);
         tran.addToBackStack("");
         tran.commit();
-        // getActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     @Override
@@ -276,6 +275,5 @@ public class MainActivity extends Activity
     public void onCancelSelected() {
         Log.d("TAG","onCancelSelected");
         getFragmentManager().popBackStack();
-        // getActionBar().setDisplayHomeAsUpEnabled(true);
     }
 }

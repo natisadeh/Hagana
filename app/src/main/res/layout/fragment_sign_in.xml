@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@drawable/background"
-    tools:context="com.example.natis.finalprojectversion10.SignInFragment">
+    tools:context="com.example.natis.hagana.SignInFragment">
 
     <TextView
         android:layout_width="match_parent"

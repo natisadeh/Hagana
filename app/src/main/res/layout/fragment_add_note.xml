@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/background"
     android:gravity="center|bottom"
-    tools:context="com.example.natis.finalprojectversion10.AddNoteFragment">
+    tools:context="com.example.natis.hagana.AddNoteFragment">
 
     <TextView
         android:id="@+id/textView2"

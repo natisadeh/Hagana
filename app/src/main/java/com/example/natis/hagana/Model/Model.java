@@ -51,8 +51,7 @@ public class Model {
 
     }
 
-    public ClientUser getOneUser(String uid){//, final ModelFirebase.GetUserCallback callback) {
-        Log.d("TEST", "1");
+    public ClientUser getOneUser(String uid){
         return ClientUserSQL.getUser(modelSql.getReadableDatabase(),uid);
     }
 
@@ -136,11 +135,6 @@ public class Model {
         void saveUserToRemote(ClientUser user);
     }
 
-    public interface changeFragmentListner{
-        void goToDetailsFragment();
-        void goToListFragment();
-        void goToEditFragment();
-    }
     public void addUser(final ClientUser user, final LoginListener listener){
 
         saveUserRemote sur=new saveUserRemote() {
@@ -187,22 +181,11 @@ public class Model {
         void hideProgressBar();
     }
 
-
-    public String getConnectedUserID(){
-        return modelFirebase.getConnectedUserID();
-    }
-
     public void updateUser(ClientUser user) {
         modelFirebase.updateUser(user);
         ClientUserSQL.updateUser(modelSql.getWritableDatabase(), user);
     }
-
-    public void addNote(ClientUser user, String note) {
-        user.setNotes(note);
-        ClientUserSQL.addNote(modelSql.getWritableDatabase(), user, note);
-        modelFirebase.addNote(user);
-    }
-
+    
     /*Start Image Section*/
     public interface SaveImageListener {
         void complete(String url);

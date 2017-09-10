@@ -72,14 +72,12 @@ public class ClientUserSQL {
     }
 
     static ClientUser getUser(SQLiteDatabase db, String stId) {
-        Log.d("TEST", "2");
         String[] whereArgs = new String[] {
                 stId
         };
-        Log.d("TEST", "3");
+
         Cursor cursor = db.query(USER_TABLE, null,USER_ID+"=?",whereArgs,null,null,null, "1");
         if (cursor.moveToFirst()) {
-            Log.d("TEST", "4");
             int idIndex = cursor.getColumnIndex(USER_ID);
             int fnameIndex = cursor.getColumnIndex(USER_FNAME);
             int lnameIndex = cursor.getColumnIndex(USER_LNAME);
@@ -93,7 +91,7 @@ public class ClientUserSQL {
             user.setGender(cursor.getString(genderIndex));
             user.setImageUrl(cursor.getString(imageUrlIndex));
             user.setImageBitMap(cursor.getBlob(imageBitMapIndex));
-            Log.d("TEST", "5");
+
             return user;
         }
         return null;

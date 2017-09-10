@@ -41,22 +41,9 @@ public class AddNoteFragment extends Fragment {
                 current.setNotes(note.getText().toString());
                 Model.instance().updateUser(current);
                 getFragmentManager().popBackStack();
-//                ful = new UserListFragment();
-//                ftr = getFragmentManager().beginTransaction();
-//                //add to the screen
-//                ftr.replace(R.id.main_container, ful);
-//                ftr.addToBackStack("");
-//                ftr.commit();
             }
         });
 
         return view;
     }
-
-    public ClientUser setUserNote(ClientUser user)
-    {
-        user.setNotes(note.getText().toString());
-        return user;
-    }
-
 }
