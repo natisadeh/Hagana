@@ -28,6 +28,7 @@ public class AddNoteFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              final Bundle savedInstanceState) {
+        getActivity().setTitle("Add note");
         View view=inflater.inflate(R.layout.fragment_add_note, container, false);
         note=(EditText) view.findViewById(R.id.fragment_note_text);
         done=(Button)view.findViewById(R.id.fragment_note_done);
